@@ -1,15 +1,10 @@
-from tortoise import fields
-from tortoise.models import Model
+from database import Base
+from sqlalchemy import Column, String, Integer
 
-class User(Model):
-    id = fields.IntField(pk=True)
-    username = fields.CharField(max_length=50, unique=True)
-    email = fields.CharField(max_length=100, unique=True)
-    password = fields.CharField(max_length=100)
-    created_at = fields.DatetimeField(auto_now_add=True)
 
-    class Meta:
-        table = "users"
+class User(Base):
+    __tablename__ = "users"
 
-    def __str__(self):
-        return self.username
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, unique=True, nullable=True)
+    password = Column(String, nullable=True)

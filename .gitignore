@@ -1,5 +1,4 @@
 __pycache__
-migrations
 venv
-pyproject.toml
-user.db
+.env
+users.db
